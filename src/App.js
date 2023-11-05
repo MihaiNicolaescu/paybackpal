@@ -21,12 +21,9 @@ function App() {
         balance: getRandomInt(-100, 100),
       },
     ]);
-
-    const [toggleCheck, setToggleCheck] = useState(
-      {
-        "isToggle": true,
-        "id": -1,
-      });
+    // variables used for adding a bill
+    const [toggleKey, setToggleKey] = useState(null);
+    const [toggleCheck, setToggleCheck] = useState(false)
 
   function addFriend(name) {
     var newFriend = {
@@ -34,11 +31,16 @@ function App() {
         "name" : name,
         "balance": 0,
     }
-
+    
     setFriends([...friends, newFriend]);
-
+    
   }
 
+  function handleCheck(key){
+    toggleKey === null ? setToggleCheck(true) : setToggleCheck(false);
+    setToggleKey(key);
+  }
+  
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
@@ -47,10 +49,10 @@ function App() {
       <h1 className="text-4xl font-bold font-mono mt-5 mb-5 text-center">PaybackPal</h1>
       <div className='flex w-full'>
         <div className='w-2/4'>
-          <FriendList friends={friends} addFriend={addFriend} />
+          <FriendList friends={friends} addFriend={addFriend} handleCheck={handleCheck} toggleKey={toggleKey} />
         </div>
         <div className='w-2/4'>
-          <Check />
+          {toggleCheck && <Check />}
         </div>
       </div>
     </div>

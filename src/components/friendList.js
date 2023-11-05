@@ -2,13 +2,13 @@ import { useState } from "react";
 import Friend from "./friend";
 import FriendAdd from "./friendAdd";
 
-function FriendList({friends, addFriend}){
+function FriendList({friends, addFriend, handleCheck, toggleKey}){
     const [toggleAddFriend, setToggleAddFriend] = useState(false);
     return(
         <div className="FriendList  bg-gray-100 w-[450px]">
             <p className="text-center text-2xl font-bold font-mono underlineb">Friend List</p>
             {friends.map((friend, index) => (
-                <Friend key={index} info={friend} index={index}/>
+                <Friend key={index} info={friend} index={index} handleCheck={handleCheck} toggleKey={toggleKey}/>
             ))}
             {toggleAddFriend? <FriendAdd addFriend={addFriend} setToggleAddFriend={setToggleAddFriend} /> : ""}
             <div className="flex justify-center">

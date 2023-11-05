@@ -1,6 +1,6 @@
 function Check(){
     return(
-        <div className="check">
+        <div className="chec bg-gray-100 h-full">
             <p className="text-2xl text-center mb-4">SPLIT A BILL WITH [NAME]</p>
             <div className="flex w-full">
                 <div className="check-text w-2/4 ml-8">
