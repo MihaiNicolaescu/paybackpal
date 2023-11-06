@@ -1,9 +1,8 @@
 import { useState } from "react";
 
-function Friend({info, handleCheck, toggleKey}) {
+function Friend({info, handleCheck, toggleKey, index}) {
 
-    const [isSelected, setSelected] = useState(false);
-    const [state, setState] = useState("Check");
+    const [state, setState] = useState("Select");
 
     function generateMessage(money){
         if (money === 0) {
@@ -16,15 +15,12 @@ function Friend({info, handleCheck, toggleKey}) {
     }
 
     function handleSelection(){
-        debugger;
-        if(isSelected === false && toggleKey === null){
-            handleCheck(info.key);
-            setSelected(true);
-            setState("Cancel");
-        } else if (toggleKey === info.key) {
+        if(toggleKey === null){
+            handleCheck(index);
+            setState("Close");
+        } else if (toggleKey === index) {
             handleCheck(null);
-            setSelected(false);
-            setState("Check");
+            setState("Select");
         }
     }
 

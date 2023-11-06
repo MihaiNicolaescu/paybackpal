@@ -21,6 +21,7 @@ function App() {
         balance: getRandomInt(-100, 100),
       },
     ]);
+
     // variables used for adding a bill
     const [toggleKey, setToggleKey] = useState(null);
     const [toggleCheck, setToggleCheck] = useState(false)
@@ -52,7 +53,7 @@ function App() {
           <FriendList friends={friends} addFriend={addFriend} handleCheck={handleCheck} toggleKey={toggleKey} />
         </div>
         <div className='w-2/4'>
-          {toggleCheck && <Check />}
+          {toggleCheck && <Check friendInfo={friends[toggleKey]} friends={friends} setFriends={setFriends} toggleKey={toggleKey} setToggleKey={setToggleKey} setToggleCheck={setToggleCheck} />}
         </div>
       </div>
     </div>
